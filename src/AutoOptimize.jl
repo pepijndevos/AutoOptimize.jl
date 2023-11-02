@@ -115,7 +115,7 @@ function auto_optimize(prob::ODEProblem,alg=nothing;
                         gp = prob.p
                   else
                         # Guess whether p should be on the GPU too
-                        gp = typeof(prob.p) <: Array && eltype(prob.p) <: AbstractFloat && length(prob.p) > 100 ? cu(prob.p) : prob.p
+                        gp = prob.p isa Array && eltype(prob.p) <: AbstractFloat && length(prob.p) > 100 ? cu(prob.p) : prob.p
                   end
 
 
